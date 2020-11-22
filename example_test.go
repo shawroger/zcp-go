@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func ExampleGenerateCardList() {
+func ExampleCardListGenerate() {
 	// 生成卡组，长度为 5
 	r := CardListGenerate(5)
 

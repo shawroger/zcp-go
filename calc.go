@@ -1,12 +1,19 @@
-package calc
+package zcp
 
 import (
+	"fmt"
 	"math"
 )
 
 type ValidGroup [2]CardList
 
 type Result []ValidGroup
+
+func (r Result) Print() {
+	for _, list := range r {
+		fmt.Printf("%v <=> %v\n", list[0], list[1])
+	}
+}
 
 // addUtilHalf 判断目标在卡组长度的一半以上
 func addUtilHalf(x int, y CardList) bool {
@@ -17,7 +24,7 @@ func addUtilHalf(x int, y CardList) bool {
 func RunWithAll(c CardList) Result {
 	var r Result
 	for width := len(c); addUtilHalf(width, c); width-- {
-		baseList := ErgodicCard2(c, width)
+		baseList := ErgodicCardList2(c, width)
 
 		// 直接获取二分组的结果
 		for _, list := range baseList {
@@ -30,11 +37,11 @@ func RunWithAll(c CardList) Result {
 	return r
 }
 
-// Run 获取结果
+// Run 获取合理结果
 func Run(c CardList) Result {
 	var r Result
 	for width := len(c); addUtilHalf(width, c); width-- {
-		baseList := ErgodicCard2(c, width)
+		baseList := ErgodicCardList2(c, width)
 
 		for _, list := range baseList {
 
@@ -66,4 +73,9 @@ func Run(c CardList) Result {
 	}
 
 	return r
+}
+
+// Run 直接获取合理结果
+func (p CardList) Run() Result {
+	return Run(p)
 }

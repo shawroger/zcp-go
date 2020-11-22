@@ -1,4 +1,4 @@
-package calc
+package zcp
 
 import (
 	"fmt"
@@ -12,6 +12,9 @@ type CardListFeature interface {
 	Copy() CardList
 	Sort() CardList
 	Str() string
+	Print()
+	Ergodic(width int) Result
+	Run() Result
 	sort.Interface
 }
 
@@ -51,13 +54,18 @@ func (p CardList) Swap(i, j int) {
 //
 // 在 Copy 基础上，不修改原数据
 func (p CardList) Sort() CardList {
-	copy := p.Copy()
-	sort.Sort(copy)
+	c := p.Copy()
+	sort.Sort(c)
 
-	return copy
+	return c
 }
 
 // Str 转字符串
 func (p CardList) Str() string {
 	return fmt.Sprintf("%v", p)
+}
+
+// Print 控制台打印
+func (p CardList) Print() {
+	fmt.Println(p)
 }

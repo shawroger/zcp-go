@@ -1,4 +1,4 @@
-package calc
+package zcp
 
 import "reflect"
 
@@ -7,6 +7,15 @@ type CardPoint int8
 
 // CardList 卡牌点数组
 type CardList []CardPoint
+
+// CardListGroup 卡牌点数组组合
+type CardListGroup []CardList
+
+func (c CardListGroup) Print() {
+	for _, list := range c {
+		list.Print()
+	}
+}
 
 // makeCardPoint 判断类型可否转为 CardPoint 型
 func makeCardPoint(x interface{}) (CardPoint, bool) {
@@ -53,17 +62,17 @@ func New(x ...interface{}) CardList {
 // 枚举卡牌点数 A~K
 // p0 点数为 0 不导出
 const (
-	p0  CardPoint = iota
-	P1  CardPoint = iota
-	P2  CardPoint = iota
-	P3  CardPoint = iota
-	P4  CardPoint = iota
-	P6  CardPoint = iota
-	P7  CardPoint = iota
-	P8  CardPoint = iota
-	P9  CardPoint = iota
-	P10 CardPoint = iota
-	P11 CardPoint = iota
-	P12 CardPoint = iota
-	P13 CardPoint = iota
+	p0 CardPoint = iota
+	//P1  CardPoint = iota
+	//P2  CardPoint = iota
+	//P3  CardPoint = iota
+	//P4  CardPoint = iota
+	//P6  CardPoint = iota
+	//P7  CardPoint = iota
+	//P8  CardPoint = iota
+	//P9  CardPoint = iota
+	//P10 CardPoint = iota
+	//P11 CardPoint = iota
+	//P12 CardPoint = iota
+	//P13 CardPoint = iota
 )

@@ -1,13 +1,4 @@
-package calc
-
-// Sum 一系列点数求和
-func Sum(p ...CardPoint) CardPoint {
-	r := p0
-	for _, value := range p {
-		r += value
-	}
-	return r
-}
+package zcp
 
 // SumList 卡牌组求和
 func SumList(p CardList) CardPoint {

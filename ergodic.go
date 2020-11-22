@@ -1,8 +1,8 @@
-package calc
+package zcp
 
 // ErgodicBase 遍历基函数
-func ErgodicBase(size, width int) []CardList {
-	var r []CardList
+func ErgodicBase(size, width int) CardListGroup {
+	var r CardListGroup
 
 	if size == width {
 		base := CardListGenerate(width)
@@ -10,7 +10,7 @@ func ErgodicBase(size, width int) []CardList {
 	} else if size > width {
 		base := ErgodicBase(size-1, width)
 		for _, value := range base {
-			for index, _ := range value {
+			for index := range value {
 				var temp CardList
 				temp = append(temp, value[:index]...)
 				temp = append(temp, value[index+1:]...)
@@ -45,9 +45,9 @@ func ErgodicBase2(size, width int) Result {
 	return r
 }
 
-// ErgodicCard 列出所有卡组组合
-func ErgodicCard(p CardList, width int) []CardList {
-	var r []CardList
+// ErgodicCardList 列出所有卡组组合
+func ErgodicCardList(p CardList, width int) CardListGroup {
+	var r CardListGroup
 	base := ErgodicBase(len(p), width)
 	for _, list := range base {
 		var temp CardList
@@ -62,10 +62,10 @@ func ErgodicCard(p CardList, width int) []CardList {
 	return r
 }
 
-// ErgodicCard2
+// ErgodicCardList2
 //
 // 列出所有卡组组合，且包含对应剩余分组
-func ErgodicCard2(p CardList, width int) Result {
+func ErgodicCardList2(p CardList, width int) Result {
 	var r Result
 	base := ErgodicBase2(len(p), width)
 	for _, list := range base {
@@ -81,4 +81,9 @@ func ErgodicCard2(p CardList, width int) Result {
 		r = append(r, ValidGroup{temp1, temp2})
 	}
 	return r
+}
+
+// Ergodic 直接遍历组合
+func (p CardList) Ergodic(width int) Result {
+	return ErgodicCardList2(p, width)
 }

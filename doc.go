@@ -1,3 +1,5 @@
-package zcp_go
+// Copyright (c) 2020 shawroger <roger@shawroger.com>
+package zcp
 
-const Version = "0.0.1"
+// Version is the version of this package.
+const Version = "0.0.2"

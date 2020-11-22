@@ -1,13 +1,12 @@
-package calc_test
+package zcp
 
 import (
 	"fmt"
-	"github.com/shawroger/zcp-go/calc"
 )
 
 func ExampleGenerateCardList() {
 	// 生成卡组，长度为 5
-	r := calc.CardListGenerate(5)
+	r := CardListGenerate(5)
 
 	fmt.Printf("%#v", r)
 

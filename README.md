@@ -49,6 +49,13 @@ Copyright (c) 2020 shawroger <roger@shawroger.com>
   * [func (r Result) Print()](#Result.Print)
 * [type ValidGroup](#ValidGroup)
 
+## <a name="pkg-constants">Constants</a>   
+``` go
+const Version = "0.0.2"
+```
+Version is the version of this package.
+
+
 
 ## <a name="CardListContain">func</a> CardListContain
 ``` go
